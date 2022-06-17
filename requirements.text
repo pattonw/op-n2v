@@ -1,0 +1,10 @@
+pydantic
+black
+mypy
+matplotlib
+zarr
+click
+yaml
+gunpowder
+git+https://github.com/funkelab/funlib.geometry
+git+https://github.com/funkelab/daisy
