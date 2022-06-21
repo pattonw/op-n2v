@@ -161,7 +161,7 @@ def view_snapshots(scale_config, weights, loss):
     with viewer.txn() as s:
         while len(s.layers) > 0:
             del s.layers[0]
-        for raw_dataset in raw_datasets[::-1]:
+        for raw_dataset in raw_datasets:
             daisy_array = daisy.open_ds(
                 "/nrs/cellmap/pattonw/scale_net/snapshots.zarr",
                 f"volumes/{raw_dataset}",
@@ -284,14 +284,14 @@ def view_snapshots(scale_config, weights, loss):
                 neuroglancer.column_layout(
                     [
                         neuroglancer.LayerGroupViewer(
-                            layers=raw_datasets + target_datasets
+                            layers=raw_datasets[::-1] + target_datasets
                         ),
                     ]
                 ),
                 neuroglancer.column_layout(
                     [
                         neuroglancer.LayerGroupViewer(
-                            layers=raw_datasets + pred_datasets
+                            layers=raw_datasets[::-1] + pred_datasets
                         ),
                     ]
                 ),
