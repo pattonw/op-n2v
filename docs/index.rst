@@ -1,4 +1,4 @@
-Welcome to ContextNet's documentation!
+Welcome to care's documentation!
 ======================================
 
 .. toctree::

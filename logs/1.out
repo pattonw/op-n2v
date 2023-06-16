@@ -1,0 +1,45 @@
+Starting from scratch!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@e10u24>
+Subject: Job 126540671: <care v2 train -t configs/care1.yaml> in cluster <Janelia> Exited
+
+Job <care v2 train -t configs/care1.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Tue Oct 18 13:32:34 2022
+Job was executed on host(s) <4*e10u24>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Tue Oct 18 13:32:37 2022
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Tue Oct 18 13:32:37 2022
+Terminated at Thu Oct 20 21:13:22 2022
+Results reported at Thu Oct 20 21:13:22 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/care1.yaml
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   159350.66 sec.
+    Max Memory :                                 1824 MB
+    Average Memory :                             1821.03 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               59616.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                23
+    Run time :                                   200448 sec.
+    Turnaround time :                            200448 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/1.err> for stderr output of this job.
+

@@ -1,0 +1,12 @@
+raw_voxel_size: [8, 8, 8]
+gt_voxel_size: [4, 4, 4]
+min_volume_size: 50
+neighborhood:
+  - [13, 0, 0]
+  - [0, 13, 0]
+  - [0, 0, 13]
+  - [-13, 0, 0]
+  - [0, -13, 0]
+  - [0, 0, -13]
+datasets:
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/yoshi/datasets/Z0419_25_Alpha3.yaml

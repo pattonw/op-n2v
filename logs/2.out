@@ -1,0 +1,220 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@e10u23>
+Subject: Job 128391987: <care v2 train -t configs/training/care2.yaml> in cluster <Janelia> Exited
+
+Job <care v2 train -t configs/training/care2.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Sun Jan 22 19:38:08 2023
+Job was executed on host(s) <4*e10u23>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Sun Jan 22 19:38:08 2023
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Sun Jan 22 19:38:08 2023
+Terminated at Sun Jan 22 19:38:18 2023
+Results reported at Sun Jan 22 19:38:18 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/training/care2.yaml
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :                                   2.66 sec.
+    Max Memory :                                 142 MB
+    Average Memory :                             112.00 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               61298.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                11
+    Run time :                                   8 sec.
+    Turnaround time :                            10 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/2.err> for stderr output of this job.
+
+Starting from scratch!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@h07u20>
+Subject: Job 128391990: <care v2 train -t configs/care2.yaml> in cluster <Janelia> Exited
+
+Job <care v2 train -t configs/care2.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Sun Jan 22 21:07:42 2023
+Job was executed on host(s) <4*h07u20>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Sun Jan 22 21:07:42 2023
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Sun Jan 22 21:07:42 2023
+Terminated at Sun Jan 22 21:08:12 2023
+Results reported at Sun Jan 22 21:08:12 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/care2.yaml
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   5.25 sec.
+    Max Memory :                                 1651 MB
+    Average Memory :                             883.22 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               59789.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                13
+    Run time :                                   29 sec.
+    Turnaround time :                            30 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/2.err> for stderr output of this job.
+
+Starting from scratch!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@h07u20>
+Subject: Job 128391991: <care v2 train -t configs/care2.yaml> in cluster <Janelia> Exited
+
+Job <care v2 train -t configs/care2.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Sun Jan 22 21:10:58 2023
+Job was executed on host(s) <4*h07u20>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Sun Jan 22 21:10:58 2023
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Sun Jan 22 21:10:58 2023
+Terminated at Sun Jan 22 21:11:07 2023
+Results reported at Sun Jan 22 21:11:07 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/care2.yaml
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   4.53 sec.
+    Max Memory :                                 1658 MB
+    Average Memory :                             1257.25 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               59782.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                14
+    Run time :                                   8 sec.
+    Turnaround time :                            9 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/2.err> for stderr output of this job.
+
+Starting from scratch!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@e10u23>
+Subject: Job 128391993: <care v2 train -t configs/care2.yaml> in cluster <Janelia> Exited
+
+Job <care v2 train -t configs/care2.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Sun Jan 22 21:22:55 2023
+Job was executed on host(s) <4*e10u23>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Sun Jan 22 21:22:55 2023
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Sun Jan 22 21:22:55 2023
+Terminated at Mon Jan 23 10:09:29 2023
+Results reported at Mon Jan 23 10:09:29 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/care2.yaml
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   38071.59 sec.
+    Max Memory :                                 1835 MB
+    Average Memory :                             1832.82 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               59605.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                23
+    Run time :                                   45995 sec.
+    Turnaround time :                            45994 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/2.err> for stderr output of this job.
+
+Starting from scratch!
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@h07u20>
+Subject: Job 128392873: <care v2 train -t configs/care2.yaml> in cluster <Janelia> Done
+
+Job <care v2 train -t configs/care2.yaml> was submitted from host <vm7134> by user <pattonw> in cluster <Janelia> at Mon Jan 23 10:18:45 2023
+Job was executed on host(s) <4*h07u20>, in queue <gpu_t4>, as user <pattonw> in cluster <Janelia> at Mon Jan 23 10:18:45 2023
+</groups/mousebrainmicro/home/pattonw> was used as the home directory.
+</groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care> was used as the working directory.
+Started at Mon Jan 23 10:18:45 2023
+Terminated at Tue Jan 31 09:37:44 2023
+Results reported at Tue Jan 31 09:37:44 2023
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+care v2 train -t configs/care2.yaml
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   584258.56 sec.
+    Max Memory :                                 1844 MB
+    Average Memory :                             1771.23 MB
+    Total Requested Memory :                     61440.00 MB
+    Delta Memory :                               59596.00 MB
+    Max Swap :                                   305 MB
+    Max Processes :                              3
+    Max Threads :                                23
+    Run time :                                   688738 sec.
+    Turnaround time :                            688739 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/2.err> for stderr output of this job.
+

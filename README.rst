@@ -1,16 +1,16 @@
 ==========
-ContextNet
+care
 ==========
 
 
-.. image:: https://img.shields.io/pypi/v/contextnet.svg
-        :target: https://pypi.python.org/pypi/contextnet
+.. image:: https://img.shields.io/pypi/v/care.svg
+        :target: https://pypi.python.org/pypi/care
 
-.. image:: https://img.shields.io/travis/pattonw/contextnet.svg
-        :target: https://travis-ci.com/pattonw/contextnet
+.. image:: https://img.shields.io/travis/pattonw/care.svg
+        :target: https://travis-ci.com/pattonw/care
 
-.. image:: https://readthedocs.org/projects/contextnet/badge/?version=latest
-        :target: https://contextnet.readthedocs.io/en/latest/?version=latest
+.. image:: https://readthedocs.org/projects/care/badge/?version=latest
+        :target: https://care.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
 
@@ -20,7 +20,7 @@ Library and Scripts for training volumetric models with infinite context
 
 
 * Free software: MIT license
-* Documentation: https://contextnet.readthedocs.io.
+* Documentation: https://care.readthedocs.io.
 
 
 Features

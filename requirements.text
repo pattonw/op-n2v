@@ -4,7 +4,7 @@ mypy
 matplotlib
 zarr
 click
-yaml
+pyyaml
 gunpowder
 git+https://github.com/funkelab/funlib.geometry
 git+https://github.com/funkelab/daisy

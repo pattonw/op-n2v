@@ -1,0 +1,19 @@
+input_shape_voxels: [36, 36, 36]
+eval_input_shape_voxels: [120, 120, 120]
+num_iterations: 500_000
+checkpoint_interval: 10_000
+snapshot_interval: 10_000
+warmup: 10_000
+batch_size: 6
+checkpoint_dir: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_2/checkpoints"
+snapshot_container: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_2/snapshots.zarr"
+validation_container: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_2/validations.zarr"
+loss_file: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_2/losses.csv"
+val_file: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_2/validations.csv"
+learning_rate: 0.0001
+num_workers: 10
+data_config_file: "configs/data/all_data.yaml"
+architecture_config_file: "configs/architecture/backbone.yaml"
+start: "/nrs/cellmap/pattonw/context_net_experiments/context_net_care_1/checkpoints/130000"
+comments:
+  - continuation of first care1 but with histogram equalization for intensity/contrast normalization

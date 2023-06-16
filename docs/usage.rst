@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use ContextNet in a project::
+To use care in a project::
 
-    import contextnet
+    import care

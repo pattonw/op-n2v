@@ -1,0 +1,26 @@
+raw_voxel_size: [8, 8, 8]
+gt_voxel_size: [4, 4, 4]
+min_volume_size: 50
+neighborhood:
+  - [13, 0, 0]
+  - [0, 13, 0]
+  - [0, 0, 13]
+  - [-13, 0, 0]
+  - [0, -13, 0]
+  - [0, 0, -13]
+datasets:
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_cos7-1b.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_hela-3.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_sum159-1.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_ctl-id8-1.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_jurkat-1.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_sum159-4.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/hemibrain.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_fly-vnc-1.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_macrophage-2.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_mus-nacc-1.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_ut21-1413-003.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_cos7-1a.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_hela-2.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_mb-1a.yaml
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/dacapo_refactor_experiments/configs/yamls/cellmap/datasets/jrc_mus-pancreas-1.yaml
