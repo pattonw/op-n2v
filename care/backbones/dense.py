@@ -108,7 +108,6 @@ class DenseNet(nn.Module):
         bn_size=4,
         drop_rate=0,
         padding="valid",
-        upsample_mode: str = "nearest",
     ):
 
         super().__init__()
@@ -163,7 +162,6 @@ class DenseNet(nn.Module):
                 nn.init.kaiming_normal_(m.weight, mode="fan_in", nonlinearity="relu")
 
         self.final_layer = nn.Conv3d(num_embeddings, n_output_channels, (1, 1, 1))
-        self.upsample = torch.nn.Upsample(scale_factor=2, mode=upsample_mode)
 
     def forward(self, raw):
         features = self.features(raw)
