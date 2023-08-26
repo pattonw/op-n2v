@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', "pyyaml", "gunpowder>=1.3", "pydantic"]
+requirements = ['Click>=7.0', "pyyaml", "gunpowder>=1.3", "pydantic", "daisy", "funlib.persistence", "matplotlib"]
 
 test_requirements = ['pytest>=3', ]
 
