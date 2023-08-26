@@ -52,7 +52,6 @@ def train(train_config, workers):
         growth_rate=model_config.growth_rate,
         block_config=model_config.block_config,
         padding=model_config.padding,
-        upsample_mode=model_config.upsample_mode,
     ).cuda()
 
     if train_config.loss_file.exists():
@@ -121,9 +120,13 @@ def train(train_config, workers):
             )
 
             # convert raw, target and weight to tensor
-            torch_raw_input = torch.unsqueeze(
-                torch.from_numpy(raw_input.data).cuda().float(), 1
-            )
+            if len(raw_input.data.shape) == train_config.input_shape_voxels.dims + 1:
+                torch_raw_input = torch.unsqueeze(
+                    torch.from_numpy(raw_input.data).cuda().float(), 1
+                )
+            else:
+                torch_raw_input = torch.from_numpy(raw_input.data).cuda().float()
+
             torch_raw_context = torch.from_numpy(raw_context.data).cuda().float()
 
             # STEP 1: PREDICT CONTEXT
