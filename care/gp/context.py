@@ -42,9 +42,15 @@ class Context(gp.BatchFilter):
         out_roi = request[self.out_array].roi
         in_array = batch[self.in_array]
         vs = self.spec[self.in_array].voxel_size
-        context_data = np.stack(
-            [in_array.crop(out_roi + n * vs).data for n in self.neighborhood], axis=0
-        )
+        if in_array.data.ndim == len(vs):
+            context_data = np.stack(
+                [in_array.crop(out_roi + n * vs).data for n in self.neighborhood], axis=0
+            )
+        else:
+            context_data = np.concatenate(
+                [in_array.crop(out_roi + n * vs).data for n in self.neighborhood], axis=0
+            )
+
         out_spec = in_array.spec.copy()
         out_spec.roi = out_roi
         outputs[self.out_array] = gp.Array(context_data, out_spec)
@@ -89,9 +95,10 @@ class DeContext(gp.BatchFilter):
         out_roi = request[self.out_array].roi
         in_array = batch[self.in_array]
         vs = self.spec[self.in_array].voxel_size
+        nc = in_array.data.shape[0] // len(self.neighborhood)
         care_data = np.mean(
             [
-                in_array.crop(out_roi - n * vs).data[i]
+                in_array.crop(out_roi - n * vs).data[i*nc:(i+1)*nc]
                 for i, n in enumerate(self.neighborhood)
             ],
             axis=0,
