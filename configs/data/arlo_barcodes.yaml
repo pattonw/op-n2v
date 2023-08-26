@@ -1,0 +1,10 @@
+raw_voxel_size: [1, 1, 1]
+neighborhood:
+  - [7, 0, 0]
+  - [0, 7, 0]
+  - [0, 0, 7]
+  - [-7, 0, 0]
+  - [0, -7, 0]
+  - [0, 0, -7]
+datasets:
+  - /groups/mousebrainmicro/home/pattonw/Code/Scripts/CellmapHackathon/care/configs/data/raw_data/arlo_barcodes.yaml
