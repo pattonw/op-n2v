@@ -5,6 +5,7 @@ from .visualize_pipeline import visualize_pipeline
 from .train import train
 from .validate import validate
 from .view_validations import view_validations
+from .plot_loss import plot_loss
 
 
 @click.group()
@@ -16,3 +17,4 @@ v2.add_command(visualize_pipeline)
 v2.add_command(train)
 v2.add_command(validate)
 v2.add_command(view_validations)
+v2.add_command(plot_loss)
