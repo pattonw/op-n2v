@@ -40,7 +40,13 @@ class HistogramEqualization(gp.BatchFilter):
         outputs = gp.Batch()
 
         in_array = batch[self.in_array]
-        in_array.data = hist_eq(in_array.data).astype(in_array.spec.dtype)
+        if in_array.data.ndim == in_array.spec.roi.dims + 1:
+            for channel in range(in_array.data.shape[0]):
+                in_array.data[channel] = hist_eq(in_array.data[channel], number_bins=256).astype(
+                    in_array.spec.dtype
+                )
+        else:
+            in_array.data = hist_eq(in_array.data).astype(in_array.spec.dtype)
         outputs[self.out_array] = in_array
 
         return outputs
