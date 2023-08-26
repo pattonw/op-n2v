@@ -8,6 +8,8 @@ def view_snapshots(train_config):
 
     import daisy
 
+    from funlib.persistence import open_ds, Array
+
     import neuroglancer
     import yaml
     import numpy as np
@@ -30,7 +32,7 @@ def view_snapshots(train_config):
         while len(s.layers) > 0:
             del s.layers[0]
         for dataset in raw_datasets:
-            daisy_array = daisy.open_ds(
+            daisy_array = open_ds(
                 f"{train_config.snapshot_container}",
                 f"{dataset}",
             )
