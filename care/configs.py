@@ -13,7 +13,7 @@ class PydanticCoordinate(Coordinate):
         yield cls.validate
 
     @classmethod
-    def validate(cls, v):
+    def validate(cls, v, validation_info):
         return Coordinate(*v)
 
 
@@ -26,12 +26,10 @@ class BackboneConfig(BaseModel):
     block_config: list[int]
     padding: str
     embeddings: bool
-    upsample_mode: str
 
 
 class DataConfig(BaseModel):
     datasets: list[Path]
-    min_volume_size: int
     neighborhood: list[PydanticCoordinate]
 
 
@@ -40,12 +38,6 @@ class StorageConfig(BaseModel):
     crop: str = "volumes/groundtruth/crop{crop_num}/labels/{organelle}"
     container: str = "/groups/cellmap/cellmap/data/{dataset}/{dataset}.n5"
     fallback: str = "/nrs/cellmap/pattonw/data/tmp_data/{dataset}/{dataset}.n5"
-
-
-class DataSetConfig(BaseModel):
-    raw: StorageConfig = StorageConfig()
-    training: list[Union[int, str]]
-    validation: list[Union[int, str]]
 
 
 class TrainConfig(BaseModel):
