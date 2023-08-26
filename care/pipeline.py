@@ -6,6 +6,7 @@ from .gp.histogram_equalization import HistogramEqualization
 import gunpowder as gp
 import daisy
 
+from funlib.persistence import open_ds, Array
 from funlib.geometry import Coordinate
 
 import yaml
@@ -29,7 +30,7 @@ def build_pipeline(
 
         dataset_info = yaml.safe_load(dataset_yaml.open().read())
 
-        raw_info = dataset_info.get("raw", dict())
+        raw_info = dataset_info
         dataset_container: str = raw_info.get("container", RAW_CONTAINER).format(
             dataset=dataset_yaml.name[:-5]
         )
@@ -47,7 +48,7 @@ def build_pipeline(
 
             # get raw container
             raw_dataset_level = raw_dataset_name.format(level=scale_level)
-            raw_dataset: daisy.Array = daisy.open_ds(
+            raw_dataset: Array = open_ds(
                 f"{dataset_container}",
                 raw_dataset_level,
             )
