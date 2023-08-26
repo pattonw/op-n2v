@@ -6,4 +6,3 @@ growth_rate: 64
 block_config: [12]
 padding: valid
 embeddings: true
-upsample_mode: trilinear

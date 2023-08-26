@@ -1,8 +1,8 @@
-raw_input_channels: 13
-n_output_channels: 78
+raw_input_channels: 16
+n_output_channels: 96
 num_init_features: 64
 num_embeddings: 64
-growth_rate: 128
+growth_rate: 64
 block_config: [6]
 padding: valid
 embeddings: true

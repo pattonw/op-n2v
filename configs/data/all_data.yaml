@@ -1,6 +1,4 @@
 raw_voxel_size: [8, 8, 8]
-gt_voxel_size: [4, 4, 4]
-min_volume_size: 50
 neighborhood:
   - [13, 0, 0]
   - [0, 13, 0]
