@@ -105,3 +105,4 @@ ENV/
 .vscode/
 .idea/
 daisy_logs
+configs/data/raw_data
