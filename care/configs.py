@@ -65,7 +65,7 @@ class TrainConfig(BaseModel):
         return self.base_dir / "validation"
 
     @property
-    def loss_container(self) -> Path:
+    def loss_file(self) -> Path:
         return self.base_dir / "loss.csv"
 
     @property
