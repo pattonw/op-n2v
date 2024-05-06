@@ -28,12 +28,8 @@ class BackboneConfig(BaseModel):
     embeddings: bool
 
 
-class DatasetConfig(BaseModel):
-    path: Path
-
-
 class DataConfig(BaseModel):
-    datasets: list[DatasetConfig]
+    datasets: list[Path]
     neighborhood: list[PydanticCoordinate]
 
 
