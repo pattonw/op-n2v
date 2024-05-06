@@ -1,5 +1,6 @@
 import gunpowder as gp
 import tifffile
+import random
 
 class TiffStackSource(gp.BatchProvider):
     def __init__(self, array_key, path):
@@ -17,5 +18,7 @@ class TiffStackSource(gp.BatchProvider):
 
     def provide(self, request):
         batch = gp.Batch()
+
         batch[self.array_key] = self.array.crop(request[self.array_key].roi)
+        batch[self.array_key].data = batch[self.array_key].data[random.randint(0, batch[self.array_key].data.shape[0] - 1)]
         return batch
