@@ -6,5 +6,6 @@ zarr
 click
 pyyaml
 gunpowder
-git+https://github.com/funkelab/funlib.geometry
-git+https://github.com/funkelab/daisy
+torch
+funlib.geometry
+daisy
