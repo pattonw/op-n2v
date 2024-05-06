@@ -1,0 +1,27 @@
+input_shape_voxels: [36, 36, 36]
+eval_input_shape_voxels: [120, 120, 120]
+num_iterations: 500_000
+checkpoint_interval: 10_000
+snapshot_interval: 10_000
+warmup: 10_000
+batch_size: 6
+base_dir: "~/Work/Scripts/op-n2v/experiments/opcare-ai4life"
+learning_rate: 0.0001
+num_workers: 10
+data_config:
+  datasets:
+    - path: "~/Downloads/noisy.tiff"
+  neighborhood:
+    - [1, 0]
+    - [0, 1]
+    - [-1, 0]
+    - [0, -1]
+architecture_config:
+  raw_input_channels: 1
+  n_output_channels: 6
+  num_init_features: 64
+  num_embeddings: 8
+  growth_rate: 64
+  block_config: [12]
+  padding: valid
+  embeddings: true
