@@ -9,7 +9,7 @@ class _DenseLayer(nn.Sequential):
         super().__init__()
         self.add_module(
             "conv1",
-            nn.Conv3d(
+            nn.Conv2d(
                 num_input_features,
                 bn_size * growth_rate,
                 kernel_size=1,
@@ -20,7 +20,7 @@ class _DenseLayer(nn.Sequential):
         self.add_module("relu1", nn.ReLU(inplace=False))
         self.add_module(
             "conv2",
-            nn.Conv3d(
+            nn.Conv2d(
                 bn_size * growth_rate,
                 growth_rate,
                 kernel_size=3,
@@ -73,7 +73,7 @@ class _Transition(nn.Sequential):
         super().__init__()
         self.add_module(
             "conv",
-            nn.Conv3d(
+            nn.Conv2d(
                 num_input_features,
                 num_output_features,
                 kernel_size=1,
@@ -119,7 +119,7 @@ class DenseNet(nn.Module):
         first_conv = [
             (
                 "conv1",
-                nn.Conv3d(
+                nn.Conv2d(
                     n_input_channels,
                     num_init_features,
                     kernel_size=1,
@@ -154,14 +154,14 @@ class DenseNet(nn.Module):
             self.features.add_module("transition{}".format(i + 1), trans)
             num_features = num_init_features
         self.features.add_module(
-            "embeddings", torch.nn.Conv3d(num_init_features, num_embeddings, 1)
+            "embeddings", torch.nn.Conv2d(num_init_features, num_embeddings, 1)
         )
 
         for m in self.modules():
-            if isinstance(m, nn.Conv3d):
+            if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode="fan_in", nonlinearity="relu")
 
-        self.final_layer = nn.Conv3d(num_embeddings, n_output_channels, (1, 1, 1))
+        self.final_layer = nn.Conv2d(num_embeddings, n_output_channels, 1)
 
     def forward(self, raw):
         features = self.features(raw)

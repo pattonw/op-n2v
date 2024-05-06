@@ -19,8 +19,6 @@ def train(train_config, workers):
     import torch
     import numpy as np
 
-    assert torch.cuda.is_available(), "Cannot train reasonably without cuda!"
-
     def save_snapshot(
         name, dataset: np.ndarray, offset: Coordinate, voxel_size: Coordinate
     ):
@@ -52,7 +50,7 @@ def train(train_config, workers):
         growth_rate=model_config.growth_rate,
         block_config=model_config.block_config,
         padding=model_config.padding,
-    ).cuda()
+    )
 
     if train_config.loss_file.exists():
         loss_stats = [
@@ -99,12 +97,12 @@ def train(train_config, workers):
         loss_stats = []
 
     # get pipeline. Stack to create appropriate batch size, add precache
-    pipeline, resolutions = build_pipeline(data_config)
+    pipeline = build_pipeline(data_config)
     pipeline += gp.Stack(train_config.batch_size)
     # if workers:
     # pipeline += gp.PreCache(num_workers=train_config.num_workers)
 
-    model = model.cuda()
+    model = model
     n_dims = train_config.input_shape_voxels.dims
     context = Coordinate((model.context,) * n_dims)
 
@@ -122,14 +120,12 @@ def train(train_config, workers):
             # convert raw, target and weight to tensor
             if len(raw_input.data.shape) == train_config.input_shape_voxels.dims + 1:
                 torch_raw_input = torch.unsqueeze(
-                    torch.from_numpy(raw_input.data).cuda().float(), 1
+                    torch.from_numpy(raw_input.data).float(), 1
                 )
             else:
-                torch_raw_input = torch.from_numpy(raw_input.data).cuda().float()
+                torch_raw_input = torch.from_numpy(raw_input.data).float()
 
-            torch_raw_context = torch.from_numpy(raw_context.data).cuda().float()
-
-            # STEP 1: PREDICT CONTEXT
+            torch_raw_context = torch.from_numpy(raw_context.data).float()
 
             _, pred = model.forward(torch_raw_input)
 
