@@ -12,10 +12,10 @@ data_config:
   datasets:
     - "data/noisy.tiff"
   neighborhood:
-    - [1, 0]
-    - [0, 1]
-    - [-1, 0]
-    - [0, -1]
+    - [13, 0]
+    - [0, 13]
+    - [-13, 0]
+    - [0, -13]
 architecture_config:
   raw_input_channels: 1
   n_output_channels: 4
