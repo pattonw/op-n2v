@@ -28,16 +28,13 @@ class BackboneConfig(BaseModel):
     embeddings: bool
 
 
+class DatasetConfig(BaseModel):
+    path: Path
+
+
 class DataConfig(BaseModel):
-    datasets: list[Path]
+    datasets: list[DatasetConfig]
     neighborhood: list[PydanticCoordinate]
-
-
-class StorageConfig(BaseModel):
-    dataset: str = "volumes/raw/s{level}"
-    crop: str = "volumes/groundtruth/crop{crop_num}/labels/{organelle}"
-    container: str = "/groups/cellmap/cellmap/data/{dataset}/{dataset}.n5"
-    fallback: str = "/nrs/cellmap/pattonw/data/tmp_data/{dataset}/{dataset}.n5"
 
 
 class TrainConfig(BaseModel):
@@ -49,22 +46,28 @@ class TrainConfig(BaseModel):
     warmup: int
     batch_size: int
     num_workers: int
-    checkpoint_dir: Path
-    snapshot_container: Path
-    validation_container: Path
-    loss_file: Path
-    val_file: Path
+    base_dir: Path
     learning_rate: float
-    data_config_file: Path
-    architecture_config_file: Path
+    data_config: DataConfig
+    architecture_config: BackboneConfig
     start: Optional[Path] = None
 
     @property
-    def data_config(self) -> DataConfig:
-        return DataConfig(**yaml.safe_load(self.data_config_file.open("r").read()))
-
+    def checkpoint_dir(self) -> Path:
+        return self.base_dir / "checkpoints"
+    
     @property
-    def architecture_config(self) -> BackboneConfig:
-        return BackboneConfig(
-            **yaml.safe_load(self.architecture_config_file.open("r").read())
-        )
+    def snapshot_container(self) -> Path:
+        return self.base_dir / "snapshots"
+    
+    @property
+    def validation_container(self) -> Path:
+        return self.base_dir / "validation"
+    
+    @property
+    def loss_container(self) -> Path:
+        return self.base_dir / "loss.csv"
+    
+    @property
+    def val_file(self) -> Path:
+        return self.base_dir / "val.csv"
