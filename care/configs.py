@@ -55,19 +55,19 @@ class TrainConfig(BaseModel):
     @property
     def checkpoint_dir(self) -> Path:
         return self.base_dir / "checkpoints"
-    
+
     @property
     def snapshot_container(self) -> Path:
         return self.base_dir / "snapshots"
-    
+
     @property
     def validation_container(self) -> Path:
         return self.base_dir / "validation"
-    
+
     @property
     def loss_container(self) -> Path:
         return self.base_dir / "loss.csv"
-    
+
     @property
     def val_file(self) -> Path:
         return self.base_dir / "val.csv"
