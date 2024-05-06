@@ -19,6 +19,11 @@ def train(train_config, workers):
     import torch
     import numpy as np
 
+    import wandb
+
+
+    wandb.init(project="op-n2v", name=str(train_config).split("/")[-1])
+
     def save_snapshot(
         name, dataset: np.ndarray, offset: Coordinate, voxel_size: Coordinate
     ):
@@ -137,19 +142,14 @@ def train(train_config, workers):
             optimizer.step()
             scheduler.step()
 
-            loss_stats.append(loss.item())
+            wandb.log({"loss": loss.item()})
 
             if i % train_config.checkpoint_interval == 0:
                 torch.save(model.state_dict(), train_config.checkpoint_dir / f"{i}")
-                with train_config.loss_file.open("w") as f:
-                    f.write("\n".join([str(x) for x in loss_stats]))
 
             if i % train_config.snapshot_interval == 0:
 
                 pred_data = pred.detach().cpu().numpy()
-
-                with train_config.loss_file.open("w") as f:
-                    f.write("\n".join([str(x) for x in loss_stats]))
 
                 for name, dataset, offset, voxel_size in zip(
                     [
@@ -175,3 +175,6 @@ def train(train_config, workers):
                 snapshot_zarr.attrs["iterations"] = snapshot_zarr.attrs.get(
                     "iterations", list()
                 ) + [i]
+
+
+        wandb.finish()
