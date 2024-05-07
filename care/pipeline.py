@@ -34,7 +34,7 @@ def build_pipeline(
             # + gp.Normalize(raw_input_key)
             + gp.IntensityAugment(raw_input_key, 0.9, 1.1, -0.1, 0.1, clip=False)
             + Context(raw_input_key, raw_context_key, data_config.neighborhood)
-            + HistogramEqualization(raw_context_key, raw_context_key)
+            # + HistogramEqualization(raw_context_key, raw_context_key)
             + gp.RandomLocation()
         )
         dataset_pipelines.append(pipeline)

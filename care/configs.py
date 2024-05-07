@@ -54,7 +54,7 @@ class TrainConfig(BaseModel):
 
     @property
     def snapshot_container(self) -> Path:
-        return self.base_dir / "snapshots"
+        return self.base_dir / "snapshots.zarr"
 
     @property
     def validation_container(self) -> Path:
