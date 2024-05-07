@@ -104,8 +104,8 @@ def train(train_config, workers):
     # get pipeline. Stack to create appropriate batch size, add precache
     pipeline = build_pipeline(data_config)
     pipeline += gp.Stack(train_config.batch_size)
-    # if workers:
-    # pipeline += gp.PreCache(num_workers=train_config.num_workers)
+    if workers:
+        pipeline += gp.PreCache(num_workers=train_config.num_workers)
 
     model = model
     n_dims = train_config.input_shape_voxels.dims
