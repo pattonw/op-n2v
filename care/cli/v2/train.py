@@ -24,6 +24,8 @@ def train(train_config, workers):
 
     wandb.init(project="op-n2v", name=str(train_config).split("/")[-1])
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     def save_snapshot(
         name, dataset: np.ndarray, offset: Coordinate, voxel_size: Coordinate
     ):
@@ -55,7 +57,7 @@ def train(train_config, workers):
         growth_rate=model_config.growth_rate,
         block_config=model_config.block_config,
         padding=model_config.padding,
-    )
+    ).to(device)
 
     if train_config.loss_file.exists():
         loss_stats = [
@@ -132,9 +134,9 @@ def train(train_config, workers):
 
             torch_raw_context = torch.from_numpy(raw_context.data).float()
 
-            _, pred = model.forward(torch_raw_input)
+            _, pred = model.forward(torch_raw_input.to(device))
 
-            loss = loss_func(pred, torch_raw_context)
+            loss = loss_func(pred, torch_raw_context.to(device))
 
             # standard training steps
             optimizer.zero_grad()
