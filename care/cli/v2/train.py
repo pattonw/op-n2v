@@ -21,7 +21,6 @@ def train(train_config, workers):
 
     import wandb
 
-
     wandb.init(project="op-n2v", name=str(train_config).split("/")[-1])
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -29,7 +28,7 @@ def train(train_config, workers):
     def save_snapshot(
         name, dataset: np.ndarray, offset: Coordinate, voxel_size: Coordinate
     ):
-        sample = dataset[0]  # select a sample from batch
+        sample = dataset
         if name not in snapshot_zarr:
             snapshot_dataset = snapshot_zarr.create_dataset(
                 name,
@@ -49,15 +48,7 @@ def train(train_config, workers):
     model_config = train_config.architecture_config
     data_config = train_config.data_config
 
-    model = DenseNet(
-        n_input_channels=model_config.raw_input_channels,
-        n_output_channels=model_config.n_output_channels,
-        num_init_features=model_config.num_init_features,
-        num_embeddings=model_config.num_embeddings,
-        growth_rate=model_config.growth_rate,
-        block_config=model_config.block_config,
-        padding=model_config.padding,
-    ).to(device)
+    model = model_config.model().to(device)
 
     if train_config.loss_file.exists():
         loss_stats = [
@@ -114,7 +105,6 @@ def train(train_config, workers):
     context = Coordinate((model.context,) * n_dims)
 
     with gp.build(pipeline):
-
         for i in tqdm(range(most_recent, train_config.num_iterations)):
             batch_request = get_request(
                 train_config.input_shape_voxels,
@@ -129,14 +119,28 @@ def train(train_config, workers):
                 torch_raw_input = torch.unsqueeze(
                     torch.from_numpy(raw_input.data).float(), 1
                 )
+                torch_raw_input_cropped = torch.unsqueeze(
+                    torch.from_numpy(raw_input.crop(raw_context.spec.roi).data).float(),
+                    1,
+                )
             else:
                 torch_raw_input = torch.from_numpy(raw_input.data).float()
+                torch_raw_input_cropped = torch.from_numpy(
+                    raw_input.crop(raw_context.spec.roi).data
+                ).float()
 
             torch_raw_context = torch.from_numpy(raw_context.data).float()
+            torch_raw_input = torch_raw_input.to(device)
+            torch_raw_input_cropped = torch_raw_input_cropped.to(device)
+            torch_raw_context = torch_raw_context.to(device)
 
-            _, pred = model.forward(torch_raw_input.to(device))
+            pred = model.forward(torch_raw_input)
+            if train_config.pred_delta:
+                target = torch_raw_context - torch_raw_input_cropped
+            else:
+                target = torch_raw_context
 
-            loss = loss_func(pred, torch_raw_context.to(device))
+            loss = loss_func(pred, target)
 
             # standard training steps
             optimizer.zero_grad()
@@ -150,7 +154,6 @@ def train(train_config, workers):
                 torch.save(model.state_dict(), train_config.checkpoint_dir / f"{i}")
 
             if i % train_config.snapshot_interval == 0:
-
                 pred_data = pred.detach().cpu().numpy()
 
                 for name, dataset, offset, voxel_size in zip(
@@ -159,7 +162,13 @@ def train(train_config, workers):
                         "raw_context",
                         "pred",
                     ],
-                    [raw_input.data, raw_context.data, pred_data],
+                    [
+                        raw_input.data[0],
+                        raw_context.data[0],
+                        (pred_data[0] + raw_input.crop(raw_context.spec.roi).data[0])
+                        if train_config.pred_delta
+                        else pred_data[0],
+                    ],
                     [
                         raw_input.spec.roi.offset,
                         raw_context.spec.roi.offset,
@@ -177,6 +186,5 @@ def train(train_config, workers):
                 snapshot_zarr.attrs["iterations"] = snapshot_zarr.attrs.get(
                     "iterations", list()
                 ) + [i]
-
 
         wandb.finish()
