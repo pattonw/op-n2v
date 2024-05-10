@@ -167,4 +167,4 @@ class DenseNet(nn.Module):
         features = self.features(raw)
         out = F.relu(features, inplace=False)
         final = self.final_layer(out)
-        return features, final
+        return final
